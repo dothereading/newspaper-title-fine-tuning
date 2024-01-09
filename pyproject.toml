@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "newspaper-title-fine-tuning"
+version = "0.1.0"
+description = ""
+authors = ["Miguel <miguelconner4@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.1.4"
+spacy = "^3.7.2"
+datasets = "^2.16.1"
+setfit = "^1.0.1"
+torch = "^2.1.2"
+matplotlib = "^3.8.2"
+datetime = "^5.4"
+sklearn-utils = "^0.0.15"
+numpy = "^1.26.3"
+sentence-transformers = "^2.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
