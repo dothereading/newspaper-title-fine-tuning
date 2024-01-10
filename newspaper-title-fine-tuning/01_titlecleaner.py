@@ -10,8 +10,6 @@ except ImportError:
     subprocess.check_call(
         [sys.executable, "-m", "spacy", "download", "en_core_web_sm"]
         )
-
-# Load spaCy model
 nlp = spacy.load("en_core_web_sm")
 
 # ---------------
@@ -26,17 +24,12 @@ corpus_path = "data/df_corpus.csv"
 # Load Corpus
 chunk_size = 10000  # Adjust based on your memory constraints
 columns_needed = ["country", "date", "title"]
-
-# Create an empty DataFrame to hold the final result
 selected_data = pd.DataFrame()
 
 # Read the CSV file in chunks
 for chunk in pd.read_csv(corpus_path, chunksize=chunk_size,
                          usecols=columns_needed):
-    # Concatenate each chunk to the final DataFrame
     selected_data = pd.concat([selected_data, chunk])
-
-
 print("Corpus data loaded.")
 
 # Use isocodes instead of full country names
@@ -55,7 +48,6 @@ print("df_corpus prepped. This next part will take many hours.")
 # ---------------
 # --- MASKING ---
 # ---------------
-
 
 # Function to mask specific terms from newspaper titles
 def mask_entities(text: str) -> str:
@@ -81,7 +73,6 @@ def mask_entities(text: str) -> str:
         elif ent.label_ == "PERSON":
             text = text.replace(ent.text, "#PER#")
     return text
-
 
 # Apply function to titles in corpus and save to csv
 selected_data["cleaned_title"] = [
